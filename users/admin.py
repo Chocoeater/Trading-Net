@@ -4,6 +4,24 @@ from .models import User
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
+    """
+    Админ-класс для кастомной модели пользователя User.
+
+    Attributes
+    ----------
+    list_display : tuple
+        Поля, отображаемые в списке пользователей.
+    list_filter : tuple
+        Поля для фильтрации списка пользователей.
+    search_fields : tuple
+        Поля, по которым выполняется поиск.
+    ordering : tuple
+        Поля для сортировки пользователей в списке.
+    fieldsets : tuple
+        Группы полей для отображения в карточке пользователя.
+    add_fieldsets : tuple
+        Группы полей при создании нового пользователя через админку.
+    """
     list_display = ('email', 'full_name', 'role', 'is_active', 'is_staff', 'date_joined')
     list_filter = ('role', 'is_active', 'is_staff')
     search_fields = ('email', 'first_name', 'last_name', 'middle_name')
