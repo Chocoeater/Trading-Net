@@ -3,6 +3,20 @@ from suppliers.models import Node, Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для модели Product.
+
+    Parameters
+    ----------
+    model : Product
+        Модель, которую сериализует данный класс.
+    fields : str or list
+        Поля модели, которые включены в сериализацию. В данном случае `"__all__"`.
+
+    Notes
+    -----
+    Используется для CRUD-операций с продуктами через DRF.
+    """
     class Meta:
         model = Product
         fields = "__all__"
