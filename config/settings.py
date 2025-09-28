@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "django_filters",
-    # "drf_spectacular",
+    "drf_spectacular",
     
     'suppliers',
     'users',
@@ -135,7 +135,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
     ],
-    # "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 # Настройки срока действия токенов
@@ -145,9 +145,9 @@ SIMPLE_JWT = {
 }
 
 # Настройка spectacular
-# SPECTACULAR_SETTINGS = {
-#     "TITLE": "API дипломного проекта",
-#     "DESCRIPTION": "Документация REST API",
-#     "VERSION": "1.0.0",
-#     "SERVE_INCLUDE_SCHEMA": False,
-# }
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Платформа-торговой сети электроники",
+    "DESCRIPTION": "Документация REST API",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
