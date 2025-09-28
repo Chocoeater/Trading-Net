@@ -23,7 +23,7 @@ class SupplierViewSet(viewsets.ModelViewSet):
     Attributes
     ----------
     queryset : QuerySet
-        Все объекты Node.
+        Все объекты Node с предвыборкой связанных продуктов (`prefetch_related("products")`).
     serializer_class : Serializer
         Сериализатор для модели Node (NodeSerializer).
     permission_classes : list
@@ -39,7 +39,9 @@ class SupplierViewSet(viewsets.ModelViewSet):
 
     Notes
     -----
-    Используется для CRUD-операций через DRF с поддержкой фильтрации, поиска и сортировки.
+    - Используется для CRUD-операций через DRF с поддержкой фильтрации, поиска и сортировки.
+    - Для оптимизации запросов используется `prefetch_related` для связанных продуктов.
+    - Удаление поставщиков через API запрещено: метод `destroy` возвращает статус 405 (Method Not Allowed).
     """
     queryset = Node.objects.prefetch_related("products").all()
     serializer_class = serializers.NodeSerializer
