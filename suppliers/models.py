@@ -74,7 +74,11 @@ class Node(models.Model):
         """
         lvl = 0
         supplier = self.supplier
+        seen = set()
         while supplier:
+            if supplier.id in seen:
+                break
+            seen.add(supplier.id)
             lvl += 1
             supplier = supplier.supplier
         return lvl
@@ -88,13 +92,15 @@ class Node(models.Model):
         ValidationError
             Если уровень узла превышает 2 или есть циклическая ссылка на поставщика.
         """
-        if self.level > 2:
+        if int(self.level) > 2:
             raise ValidationError('Узел не может быть глубже 2-го уровня')
 
         supplier = self.supplier
+        seen = set()
         while supplier:
-            if supplier == self:
+            if supplier == self or supplier.id in seen:
                 raise ValidationError('Недопустима циклическая ссылка на поставщика')
+            seen.add(supplier.id)
             supplier = supplier.supplier
 
 
