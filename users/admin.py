@@ -22,8 +22,8 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets : tuple
         Группы полей при создании нового пользователя через админку.
     """
-    list_display = ('email', 'full_name', 'role', 'is_active', 'is_staff', 'date_joined')
-    list_filter = ('role', 'is_active', 'is_staff')
+    list_display = ('email', 'full_name','is_active', 'is_staff', 'date_joined')
+    list_filter = ('is_active', 'is_staff')
     search_fields = ('email', 'first_name', 'last_name', 'middle_name')
     ordering = ('last_name',)
 
