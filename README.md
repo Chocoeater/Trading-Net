@@ -83,7 +83,7 @@ python manage.py runserver
 2. Собираем и запускаем сервисы:
 
 ```bash
-docker-compose -f docker-compose.dev.yml up -d --build
+docker-compose -f docker-compose.yml up -d --build
 ```
 
 > Сервис `back` — Django (с Poetry внутри), `db` — PostgreSQL.
